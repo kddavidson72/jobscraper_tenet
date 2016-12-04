@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="row">
+	<div class="col-md-3 scrollspy">
+		<ul data-spy="affix" class="nav">
+			<li class="lead"><strong>Categories</strong></li>
+			{% for category in categories %}
+				{% if loop.index < max %}
+					<li>
+						<a href="#job-{{ category['id'] }}">{{ category['name'] }}</a>
+					</li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="col-md-9">
+		{% for category in categories %}
+		{% if loop.index < max %}
+			{% include 'partials/onet-category.html' %}
+		{% endif %}
+		{% endfor %}
+	</div>
+</section>
+{% endblock %}
